@@ -3,9 +3,12 @@ package com.app.phonebook.serviceimpl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import com.app.phonebook.entity.ContactEntity;
 import com.app.phonebook.model.Contact;
 import com.app.phonebook.repository.ContactRepository;
 import com.app.phonebook.service.ContactService;
@@ -17,29 +20,27 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean saveContac(Contact c) {
-		Contact isSaved = repo.save(c);
-		if (isSaved != null) {
-			return true;
-		} else {
-			return false;
-		}
+		ContactEntity entity = new ContactEntity();
+		BeanUtils.copyProperties(c, entity);
+		ContactEntity saveEntity = repo.save(entity);
+		return saveEntity.getContactId() != null;
 	}
 
 	@Override
 	public List<Contact> getAllContacts() {
-		List<Contact> contacts = repo.findAll();
-		return contacts;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Optional<Contact> getContactById(Integer id) {
-		return repo.findById(id);
-
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public boolean updateContact(Contact id) {
-
+		// TODO Auto-generated method stub
 		return false;
 	}
 
