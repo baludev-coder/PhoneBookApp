@@ -10,7 +10,7 @@
 <body>
 	<h2>Contact Saved</h2>
 	<p>
-		<font color="green">${SuccMsg}</font>
+		<font color="green">${succMsg}</font>
 	</p>
 	<p>
 		<font color="red">${errMsg}</font>
@@ -36,5 +36,6 @@
 			</tr>
 		</table>
 	</form:form>
+	<a href="viewcontacts">View All contacts</a>
 </body>
 </html>

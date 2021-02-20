@@ -39,7 +39,7 @@ public class ContactEntity implements Serializable {
 	private Date createdDate;
 	@UpdateTimestamp
 	@Temporal(TemporalType.DATE)
-	@Column(name = "UPDATE_DATE")
+	@Column(name = "UPDATED_DATE")
 	private Date updatedDate;
 
 }

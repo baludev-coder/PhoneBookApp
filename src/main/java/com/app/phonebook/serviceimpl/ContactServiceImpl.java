@@ -1,11 +1,12 @@
 package com.app.phonebook.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.app.phonebook.entity.ContactEntity;
@@ -28,8 +29,14 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getAllContacts() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ContactEntity> entities = repo.findAll();
+		// List<Contact> contacts = new ArrayList<>();
+
+		return entities.stream().map(entity -> {
+			Contact contact = new Contact();
+			BeanUtils.copyProperties(entity, contact);
+			return contact;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
