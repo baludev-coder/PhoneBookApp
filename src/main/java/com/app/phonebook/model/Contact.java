@@ -12,5 +12,6 @@ public class Contact {
 	private Long contactNumber;
 	private Date createdDate;
 	private Date updatedDate;
+	
 
 }

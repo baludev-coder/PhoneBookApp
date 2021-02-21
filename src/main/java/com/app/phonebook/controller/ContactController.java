@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.app.phonebook.entity.ContactEntity;
 import com.app.phonebook.model.Contact;
@@ -27,7 +28,7 @@ public class ContactController {
 		return "contactinfo";
 	}
 
-	@PostMapping(value = "/saveContact")
+	@RequestMapping(value = "/saveContact",method = RequestMethod.POST)
 	public String saveContact(@ModelAttribute("contact") Contact c, Model model) {
 		boolean isSaved = service.saveContac(c);
 		if (isSaved) {
@@ -39,7 +40,7 @@ public class ContactController {
 		return "contactinfo";
 	}
 
-	@GetMapping(value = "/viewcontacts")
+	@RequestMapping(value = "/viewcontacts",method = RequestMethod.GET)
 	public String viewContactList(Model model) {
 		List<Contact> contactList = service.getAllContacts();
 		model.addAttribute("contacts", contactList);

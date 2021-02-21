@@ -35,11 +35,11 @@ public class ContactEntity implements Serializable {
 	private Long contactNumber;
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
-	@Column(name = "CREATED_DATE")
+	@Column(name = "CREATED_DATE",updatable = false)
 	private Date createdDate;
 	@UpdateTimestamp
 	@Temporal(TemporalType.DATE)
-	@Column(name = "UPDATED_DATE")
+	@Column(name = "UPDATED_DATE" ,insertable = false)
 	private Date updatedDate;
 
 }

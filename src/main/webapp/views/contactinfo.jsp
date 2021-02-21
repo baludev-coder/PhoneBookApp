@@ -19,6 +19,7 @@
 	<form:form action="saveContact" modelAttribute="contact" method="POST">
 		<table>
 			<tr>
+			<form:hidden path="contactId"/>
 				<td>ContactName:</td>
 				<td><form:input path="contactName" /></td>
 			</tr>

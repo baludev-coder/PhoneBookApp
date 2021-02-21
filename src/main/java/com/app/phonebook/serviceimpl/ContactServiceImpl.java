@@ -1,6 +1,5 @@
 package com.app.phonebook.serviceimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,8 +39,14 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public Optional<Contact> getContactById(Integer id) {
-		// TODO Auto-generated method stub
+	public Contact getContactById(Integer cid) {
+		Optional<ContactEntity> findById = repo.findById(cid);
+		if (findById.isPresent()) {
+			ContactEntity entity = findById.get();
+			Contact c = new Contact();
+			BeanUtils.copyProperties(entity, c);
+			return c;
+		}
 		return null;
 	}
 
@@ -52,9 +57,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public boolean deleteContact(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteContact(Integer cid) {
+		repo.deleteById(cid);
+		return true;
 	}
 
 }
